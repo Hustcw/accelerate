@@ -644,8 +644,10 @@ def deepspeed_launcher(args):
         )
         with patch_environment(**current_env):
             try:
+                print("dist run success")
                 distrib_run.run(args)
-            except Exception:
+            except Exception as e:
+                print(e)
                 if is_rich_available() and debug:
                     console = get_console()
                     console.print("\n[bold red]Using --debug, `torch.distributed` Stack Trace:[/bold red]")
