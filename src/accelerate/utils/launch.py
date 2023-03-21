@@ -223,8 +223,8 @@ def prepare_deepspeed_cmd_env(args: argparse.Namespace) -> Tuple[List[str], Dict
                     str(args.deepspeed_inclusion_filter),
                 ]
             )
-        else:
-            cmd.extend(["--num_gpus", str(args.num_processes // args.num_machines)])
+        # else:
+        #     cmd.extend(["--num_gpus", str(args.num_processes // args.num_machines)])
         cmd.extend(["--master_port", str(main_process_port)])
         if args.module and args.no_python:
             raise ValueError("--module and --no_python cannot be used together")
